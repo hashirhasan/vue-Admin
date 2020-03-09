@@ -11,29 +11,29 @@
     <div class="font-weight-bold col-1">DELETE</div>
     <div class="font-weight-bold col-1">EDIT</div>
   </div>
-   <viewsinglepost v-bind:key="post.id" v-for="post in posts" v-bind:post="post"  v-on:del-post="$emit('del-post',post.id)" v-on:edit-post="editingpost" />
+   <viewsingleuser v-bind:key="user.id" v-for="user in users" v-bind:user="user"  v-on:del-user="$emit('del-user',user.id)" v-on:edit-user="editinguser" />
 
   </div>
 </template>
 
 <script>
-import viewsinglepost from './viewsinglepost.vue'
+import viewsingleuser from './viewsingleuser.vue'
 export default {
-  name: 'viewpost',
+  name: 'viewuser',
   components:{
-      viewsinglepost
+      viewsingleuser
   },
-  props:['posts'],
+  props:['users'],
   data(){
     return {
-      existpost:''
+      existuser:''
     }
   },
   methods:{
-    editingpost(existpost)
+    editinguser(existuser)
     {
-      this.existpost=existpost;
-       this.$emit('edit-post',this.existpost)
+      this.existuser=existuser;
+       this.$emit('edit-user',this.existuser)
     }
     
   }

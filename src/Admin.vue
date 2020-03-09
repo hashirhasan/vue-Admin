@@ -3,13 +3,13 @@
       <Header  /> 
       <div >
         <div v-if="isseen">
-      <button class='button'  v-on:click="showform" >Add post</button> 
+      <button class='button no-outline'   v-on:click="showform" >Add user</button> 
         </div>
         <div v-else>
             <button class='button'  v-on:click="hideform" >close</button> 
         </div>
-       <addpost  v-on:add-post="addpost"   v-bind:seen="isseen"  v-on:send-seen="hideform"    />
-      <viewpost v-bind:posts="posts" v-on:edit-post="editpost"  v-on:del-post="deletepost"/>
+       <adduser  v-on:add-user="adduser"   v-bind:seen="isseen"  v-on:send-seen="hideform"    />
+      <viewuser v-bind:users="users" v-on:edit-user="edituser"  v-on:del-user="deleteuser"/>
       </div>
    </div>
 
@@ -19,26 +19,26 @@
 <script>
 import  axios  from "axios";
 import Header from './components/Header'
-import viewpost from './components/viewpost'
-import addpost from './components/addpost'
-// import editpost from './components/editpost'
+import viewuser from './components/viewuser'
+import adduser from './components/adduser'
+// import edituser from './components/edituser'
 export default {
     name:'Admin',
     components:{
         Header,
-        viewpost,
-        addpost,
+        viewuser,
+        adduser,
         
     },
  data(){
     return{
-        posts:[],
+        users:[],
         isseen:true,
         
     }
   },
   methods:{
-    deletepost(id){
+    deleteuser(id){
       this.$swal.fire({
   title: 'Are you sure?',
   text: "You won't be able to revert this!",
@@ -49,7 +49,7 @@ export default {
   confirmButtonText: 'Yes, delete it!'
 }).then((result) => {
   if (result.value) {
-     this.posts=this.posts.filter(post=> post.id!==id);
+     this.users=this.users.filter(user=> user.id!==id);
    this.$swal.fire(
       'Deleted!',
       'Your file has been deleted.',
@@ -61,14 +61,14 @@ export default {
 })
     
     },
-    addpost(newpost)
+    adduser(newuser)
     {
       this.$swal.fire(
         'Created!',
         'User has been created!',
         'success'
       )
-      this.posts=[...this.posts,newpost];
+      this.users=[...this.users,newuser];
     }, 
     showform:function(event) {
         console.log(event)
@@ -84,20 +84,20 @@ export default {
       this.isseen=isshow;
       console.log(isshow)
     },
-    editpost(existpost){
+    edituser(existuser){
       this.$swal.fire(
         'Updated!',
         'User details have been updated!',
         'success'
       )
-      this.posts=this.posts.filter(post=> post.id!==existpost.id)
-       this.posts=[...this.posts,existpost];
+      this.users=this.users.filter(user=> user.id!==existuser.id)
+       this.users=[...this.users,existuser];
     }
    
   },
   created(){
     axios.get('https://jsonplaceholder.typicode.com/users')
-    .then(res=> this.posts=res.data)
+    .then(res=> this.users=res.data)
     .catch(err=> console.log(err))
   }
 }
@@ -113,7 +113,9 @@ export default {
   margin-top:0px;
   padding-bottom:10rem;
 }
-
+ .no-outline:focus {
+      outline: none;
+      }
 
 table {
   font-family: arial, sans-serif;
@@ -135,6 +137,7 @@ td, th {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+   border-color: transparent;
   margin: 4px 2px;
   cursor: pointer;
   width:25%;

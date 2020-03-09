@@ -1,7 +1,7 @@
 <template>
   <div  v-if='!seen'>
       
-    <form  @submit="addpost">
+    <form  @submit="adduser">
       <h1 class="text-center">Create User</h1>
         <span class="left" v-on:click="hideform">X</span>
         <input type="text" v-model="name" name="name" placeholder="name"><br>
@@ -20,7 +20,7 @@
  import { uuid } from 'vue-uuid';
 
 export default {
-    name:'addpost',
+    name:'adduser',
     data(){
         return {
             name:'',
@@ -40,10 +40,10 @@ export default {
       
      
       
-        addpost(e){
+        adduser(e){
             e.preventDefault();
-            const newpost={
-                id:uuid.v4(),
+            const newuser={
+                 id:uuid.v4(),
                 name:this.name,
                 address:{city:this.address},
                 username:this.username,
@@ -51,8 +51,13 @@ export default {
                 phone:this.phone_no,
                 website:this.website
             }
-            this.$emit('add-post',newpost)
-      
+            this.$emit('add-user',newuser);
+            this.name=""
+            this.address=""
+            this.username=""
+            this.email=""
+            this.phone_no=""
+            this.website=""
         },
          hideform() {
           
