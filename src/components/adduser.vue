@@ -4,12 +4,12 @@
     <form  @submit="adduser">
       <h1 class="text-center">Create User</h1>
         <span class="left" v-on:click="hideform">X</span>
-        <input type="text" v-model="name" name="name" placeholder="name"><br>
-        <input type="text" v-model="username" name="username" placeholder="username"><br>
-         <input type="text" v-model="email" name="email" placeholder="email"><br>
-        <input type="text" v-model="address" name="address" placeholder="address"><br>
-        <input type="text" v-model="phone_no" name="phone" placeholder="phone_no"><br>
-        <input type="text" v-model="website" name="website" placeholder="website"><br>
+        <input type="text" v-model="name" name="name" placeholder="name"  required><br>
+        <input type="text" v-model="username" name="username" placeholder="username"  required><br>
+         <input type="text" v-model="email" name="email" placeholder="email"  required><br>
+        <input type="text" v-model="address" name="address" placeholder="address"  required><br>
+        <input type="text" v-model="phone_no" name="phone" placeholder="phone_no"  required><br>
+        <input type="text" v-model="website" name="website" placeholder="website"  required><br>
          <button  type="submit" class="button"  name="submit">Submit</button>
         </form>  
   </div>

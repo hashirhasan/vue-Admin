@@ -16,12 +16,12 @@
     <form  @submit="usereditform">
        <h1 id="editform" class="text-center text-white">Edit User</h1>
        <span class="left" v-on:click="hideeditform">X</span>
-        <input type="text" v-model="user.name" name="name" placeholder="name"><br>
-        <input type="text" v-model="user.username" name="username" placeholder="username"><br>
-         <input type="text" v-model="user.email" name="email" placeholder="email"><br>
-        <input type="text" v-model="user.address.city" name="address" placeholder="address"><br>
-        <input type="text" v-model="user.phone" name="phone" placeholder="phone_no"><br>
-        <input type="text" v-model="user.website" name="website" placeholder="website"><br>
+        <input type="text" v-model="user.name" name="name" placeholder="name"  required><br>
+        <input type="text" v-model="user.username" name="username" placeholder="username"  required><br>
+         <input type="text" v-model="user.email" name="email" placeholder="email"  required><br>
+        <input type="text" v-model="user.address.city" name="address" placeholder="address"  required><br>
+        <input type="text" v-model="user.phone" name="phone" placeholder="phone_no"  required><br>
+        <input type="text" v-model="user.website" name="website" placeholder="website"  required><br>
          <button type="submit" class="button" name="submit1">Submit</button>
         </form> 
   </div> 
